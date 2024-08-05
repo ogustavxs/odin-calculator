@@ -6,30 +6,30 @@ const multiply = (num1, num2) => num1 * num2;
 const divide = (num1, num2) => num1 / num2;
 
 let displayValue = 0;
-let number1 
-let number2
+let number1;
+let number2;
 let operatorSignal;
 
 function resultCases(operator) {
-    console.log(operatorSignal, number1, number2)
-    if (operatorSignal === undefined) {
-        console.log(0)
-    }
-    if (number1 === undefined && number2 === undefined) {
-        display.textContent = 0
-    }
-    if (number1 === undefined && number2 !== undefined) {
-        console.log(operate(operator, 0, number2))
-        display.textContent = operate(operator, 0, number2)
-    }
-    if (number1 !== undefined && number2 === undefined) {
-        console.log(operate(operator, number1, 0))
-        display.textContent = operate(operator, number1, 0)
-    }
-    if (number1 !== undefined && number2 !== undefined) {
-        console.log(operate(operator, number1, number2))
-        display.textContent = operate(operator, number1, number2)
-    }
+	console.log(operatorSignal, number1, number2);
+	if (operatorSignal === undefined) {
+		console.log(0);
+	}
+	if (number1 === undefined && number2 === undefined) {
+		display.textContent = 0;
+	}
+	if (number1 === undefined && number2 !== undefined) {
+		console.log(operate(operator, 0, number2));
+		display.textContent = operate(operator, 0, number2);
+	}
+	if (number1 !== undefined && number2 === undefined) {
+		console.log(operate(operator, number1, 0));
+		display.textContent = operate(operator, number1, 0);
+	}
+	if (number1 !== undefined && number2 !== undefined) {
+		console.log(operate(operator, number1, number2));
+		display.textContent = operate(operator, number1, number2);
+	}
 }
 
 function operate(operator, num1, num2) {
@@ -50,30 +50,30 @@ function operate(operator, num1, num2) {
 
 function changeDisplay(numberText) {
 	if (display.textContent.length < 7) {
-        if (operatorSignal === undefined) {
-            if (display.textContent === "0") {
-                display.textContent = numberText;
-                displayValue = numberText;
-            } else {
-                display.textContent = display.textContent + numberText;
-                displayValue = display.textContent;
-            }
-        }
-        if (operatorSignal !== undefined && number1 === undefined) {
-            number1 = displayValue
-            display.textContent = 0
-            displayValue = 0
-        }
-        if (operatorSignal !== undefined && number1 !== undefined) {
-            if (display.textContent === "0") {
-                display.textContent = numberText;
-                displayValue = numberText;
-            } else {
-                display.textContent = display.textContent + numberText;
-                displayValue = display.textContent;
-            }
-            number2 = displayValue
-        }
+		if (operatorSignal === undefined) {
+			if (display.textContent === "0") {
+				display.textContent = numberText;
+				displayValue = numberText;
+			} else {
+				display.textContent = display.textContent + numberText;
+				displayValue = display.textContent;
+			}
+		}
+		if (operatorSignal !== undefined && number1 === undefined) {
+			number1 = displayValue;
+			display.textContent = 0;
+			displayValue = 0;
+		}
+		if (operatorSignal !== undefined && number1 !== undefined) {
+			if (display.textContent === "0") {
+				display.textContent = numberText;
+				displayValue = numberText;
+			} else {
+				display.textContent = display.textContent + numberText;
+				displayValue = display.textContent;
+			}
+			number2 = displayValue;
+		}
 	}
 }
 
@@ -113,25 +113,25 @@ container.addEventListener("click", (e) => {
 		case "clear":
 			display.textContent = "0";
 			displayValue = 0;
-            operatorSignal = undefined
-            number1 = undefined
-            number2 = undefined
+			operatorSignal = undefined;
+			number1 = undefined;
+			number2 = undefined;
 			break;
-        case 'add':
-            operatorSignal = '+'
-            break
-        case 'subtract':
-            operatorSignal = '-'
-            break
-        case 'multiply':
-            operatorSignal = '*'
-            break
-        case 'divide':
-            operatorSignal = '/'
-            break
-        case 'equal':
-            resultCases(operatorSignal)
-            break
+		case "add":
+			operatorSignal = "+";
+			break;
+		case "subtract":
+			operatorSignal = "-";
+			break;
+		case "multiply":
+			operatorSignal = "*";
+			break;
+		case "divide":
+			operatorSignal = "/";
+			break;
+		case "equal":
+			resultCases(operatorSignal);
+			break;
 		default:
 			break;
 	}

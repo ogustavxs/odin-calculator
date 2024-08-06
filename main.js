@@ -23,7 +23,7 @@ function operate(operator, num1, num2) {
 			return multiply(num1, num2);
 		case "/":
 			if (num2 === 0) {
-				return "dumb";
+				return "Error";
 			}
 			return divide(num1, num2);
 	}
@@ -71,8 +71,10 @@ function handleEqual () {
 	result = operate(operator, Number(firstNumber), Number(atualNumber))
 	if (Number.isInteger(result)) {
 		display.textContent = result
+	} else if (result === "Error") {
+		display.textContent = result
 	} else {
-		display.textContent = result.toFixed(2)
+		display.textContent = result.toFixed(2);
 	}
 	firstNumber = display.textContent
 	restart = true

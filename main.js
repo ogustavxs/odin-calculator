@@ -1,36 +1,11 @@
 const container = document.querySelector(".container");
 const display = document.querySelector("#display");
+
+// Operações
 const add = (num1, num2) => num1 + num2;
 const subtract = (num1, num2) => num1 - num2;
 const multiply = (num1, num2) => num1 * num2;
 const divide = (num1, num2) => num1 / num2;
-
-let displayValue = 0;
-let number1;
-let number2;
-let operatorSignal;
-
-function resultCases(operator) {
-	console.log(operatorSignal, number1, number2);
-	if (operatorSignal === undefined) {
-		console.log(0);
-	}
-	if (number1 === undefined && number2 === undefined) {
-		display.textContent = 0;
-	}
-	if (number1 === undefined && number2 !== undefined) {
-		console.log(operate(operator, 0, number2));
-		display.textContent = operate(operator, 0, number2);
-	}
-	if (number1 !== undefined && number2 === undefined) {
-		console.log(operate(operator, number1, 0));
-		display.textContent = operate(operator, number1, 0);
-	}
-	if (number1 !== undefined && number2 !== undefined) {
-		console.log(operate(operator, number1, number2));
-		display.textContent = operate(operator, number1, number2);
-	}
-}
 
 function operate(operator, num1, num2) {
 	switch (operator) {
@@ -48,90 +23,58 @@ function operate(operator, num1, num2) {
 	}
 }
 
-function changeDisplay(numberText) {
-	if (display.textContent.length < 7) {
-		if (operatorSignal === undefined) {
-			if (display.textContent === "0") {
-				display.textContent = numberText;
-				displayValue = numberText;
-			} else {
-				display.textContent = display.textContent + numberText;
-				displayValue = display.textContent;
-			}
-		}
-		if (operatorSignal !== undefined && number1 === undefined) {
-			number1 = displayValue;
-			display.textContent = 0;
-			displayValue = 0;
-		}
-		if (operatorSignal !== undefined && number1 !== undefined) {
-			if (display.textContent === "0") {
-				display.textContent = numberText;
-				displayValue = numberText;
-			} else {
-				display.textContent = display.textContent + numberText;
-				displayValue = display.textContent;
-			}
-			number2 = displayValue;
-		}
+// Variaveis necessarias
+
+let operator = null // Operador atual
+let restart = false // Ao escrever, deve reiniciar o display?
+let atualNumber = '0' // Numero sendo escrito
+let firstNumber = null // Numero que ja foi escrito
+
+// Função para alterar o display dependendo da situação
+
+function changeDisplay(text) {
+	if (restart === true) {
+		display.textContent = text
+		atualNumber = display.textContent
+		restart = false
+	} else {
+		display.textContent = display.textContent === '0' ? text : display.textContent + text
+		atualNumber = display.textContent
 	}
 }
 
+//
+
+function handleOperator (operatorSignal) {
+	firstNumber = atualNumber
+	atualNumber = 0
+	restart = true
+	operator = operatorSignal
+}
+
 container.addEventListener("click", (e) => {
+
 	const id = e.target.id;
 	switch (id) {
 		case "one":
-			changeDisplay(1);
-			break;
 		case "two":
-			changeDisplay(2);
-			break;
 		case "three":
-			changeDisplay(3);
-			break;
 		case "four":
-			changeDisplay(4);
-			break;
 		case "five":
-			changeDisplay(5);
-			break;
 		case "six":
-			changeDisplay(6);
-			break;
 		case "seven":
-			changeDisplay(7);
-			break;
 		case "eight":
-			changeDisplay(8);
-			break;
 		case "nine":
-			changeDisplay(9);
-			break;
 		case "zero":
-			changeDisplay(0);
-			break;
-		case "clear":
-			display.textContent = "0";
-			displayValue = 0;
-			operatorSignal = undefined;
-			number1 = undefined;
-			number2 = undefined;
-			break;
-		case "add":
-			operatorSignal = "+";
-			break;
-		case "subtract":
-			operatorSignal = "-";
-			break;
-		case "multiply":
-			operatorSignal = "*";
-			break;
-		case "divide":
-			operatorSignal = "/";
-			break;
-		case "equal":
-			resultCases(operatorSignal);
-			break;
+			changeDisplay(e.target.textContent)
+			break
+		
+		case 'add':
+		case 'subtract':
+		case 'multiply':
+		case 'divide':
+			handleOperator(e.target.textContent)
+			break
 		default:
 			break;
 	}

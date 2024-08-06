@@ -17,7 +17,7 @@ Esse é o projeto final do curso de Fundações do [The Odin Project](https://ww
 - [x] Adicionar tratamento para divisão por zero
 - [x] Ajustar o display para números grandes
 - [x] Adicionar funcionalidade ao botão de ponto decimal
-- [ ] Adicionar funcionalidade ao botão de porcentagem
+- [x] Adicionar funcionalidade ao botão de porcentagem
 
 ## Tecnologias Usadas
 

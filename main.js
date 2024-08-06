@@ -74,7 +74,7 @@ function handleEqual () {
 	} else if (result === "Error") {
 		display.textContent = result
 	} else {
-		display.textContent = result.toFixed(2);
+		display.textContent = result.toFixed(4);
 	}
 	firstNumber = display.textContent
 	restart = true
@@ -105,6 +105,16 @@ function addDecimalPoint () {
 		return
 	}
 	display.textContent += '.'
+}
+
+function percentage () {
+	if (restart === true) {
+		firstNumber = String((Number(firstNumber)/100).toFixed(3))
+		display.textContent = firstNumber
+	} else {
+		atualNumber = String((Number(atualNumber)/100).toFixed(3));
+		display.textContent = atualNumber;
+	}
 }
 
 container.addEventListener("click", (e) => {
@@ -141,6 +151,9 @@ container.addEventListener("click", (e) => {
 			break
 		case 'decimal':
 			addDecimalPoint()
+			break
+		case 'percentage':
+			percentage()
 			break
 		default:
 			break;

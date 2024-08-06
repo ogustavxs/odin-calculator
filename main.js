@@ -9,6 +9,8 @@ const divide = (num1, num2) => num1 / num2;
 
 function operate(operator, num1, num2) {
 	switch (operator) {
+		case null:
+			return firstNumber
 		case "+":
 			return add(num1, num2);
 		case "-":
@@ -38,18 +40,35 @@ function changeDisplay(text) {
 		atualNumber = display.textContent
 		restart = false
 	} else {
-		display.textContent = display.textContent === '0' ? text : display.textContent + text
-		atualNumber = display.textContent
+		if (display.textContent.length <= 6) {
+			display.textContent = display.textContent === '0' ? text : display.textContent + text
+			atualNumber = display.textContent
+		} else {
+			return
+		}
+		
 	}
 }
 
 //
 
 function handleOperator (operatorSignal) {
-	firstNumber = atualNumber
-	atualNumber = 0
+	if (restart === true) {
+		atualNumber = 0
+	} else {
+		firstNumber = atualNumber
+		atualNumber = 0
+	}
 	restart = true
 	operator = operatorSignal
+}
+
+function handleEqual () {
+	display.textContent = operate(operator, Number(firstNumber), Number(atualNumber))
+	firstNumber = display.textContent
+	restart = true
+	atualNumber = 0
+	operator = null 
 }
 
 container.addEventListener("click", (e) => {
@@ -74,6 +93,9 @@ container.addEventListener("click", (e) => {
 		case 'multiply':
 		case 'divide':
 			handleOperator(e.target.textContent)
+			break
+		case 'equal':
+			handleEqual()
 			break
 		default:
 			break;

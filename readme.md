@@ -12,10 +12,10 @@ Esse é o projeto final do curso de Fundações do [The Odin Project](https://ww
 ## Lista de Tarefas
 
 - [x] Implementar operações básicas
-- [ ] Adicionar funcionalidade ao botão "Igual"
+- [x] Adicionar funcionalidade ao botão "Igual"
 - [ ] Adicionar funcionalidade ao botão "Clear"
 - [ ] Adicionar tratamento para divisão por zero
-- [ ] Ajustar o display para números grandes
+- [x] Ajustar o display para números grandes
 - [ ] Adicionar funcionalidade ao botão de ponto decimal
 
 ## Tecnologias Usadas

@@ -100,6 +100,13 @@ function clear () {
 	display.textContent = atualNumber
 }
 
+function addDecimalPoint () {
+	if (display.textContent.includes('.')) {
+		return
+	}
+	display.textContent += '.'
+}
+
 container.addEventListener("click", (e) => {
 
 	const id = e.target.id;
@@ -131,6 +138,9 @@ container.addEventListener("click", (e) => {
 			break
 		case 'clear':
 			clear()
+			break
+		case 'decimal':
+			addDecimalPoint()
 			break
 		default:
 			break;

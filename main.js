@@ -10,7 +10,11 @@ const divide = (num1, num2) => num1 / num2;
 function operate(operator, num1, num2) {
 	switch (operator) {
 		case null:
-			return firstNumber
+			if (restart === false) {
+				return atualNumber
+			} 
+			return firstNumber === null ? atualNumber : firstNumber
+			
 		case "+":
 			return add(num1, num2);
 		case "-":
@@ -64,12 +68,30 @@ function handleOperator (operatorSignal) {
 }
 
 function handleEqual () {
-	display.textContent = operate(operator, Number(firstNumber), Number(atualNumber))
+	result = operate(operator, Number(firstNumber), Number(atualNumber))
+	if (Number.isInteger(result)) {
+		display.textContent = result
+	} else {
+		display.textContent = result.toFixed(2)
+	}
 	firstNumber = display.textContent
 	restart = true
 	atualNumber = 0
 	operator = null 
 }
+
+function changeSignal() {
+	if (restart === true) {
+		firstNumber = String(-Number(firstNumber))
+		display.textContent = firstNumber
+	} else {
+		atualNumber = String(-Number(atualNumber));
+		display.textContent = atualNumber;
+	}
+
+    
+}
+
 
 container.addEventListener("click", (e) => {
 
@@ -96,6 +118,9 @@ container.addEventListener("click", (e) => {
 			break
 		case 'equal':
 			handleEqual()
+			break
+		case 'signal':
+			changeSignal()
 			break
 		default:
 			break;

@@ -90,10 +90,15 @@ function changeSignal() {
 		atualNumber = String(-Number(atualNumber));
 		display.textContent = atualNumber;
 	}
-
-    
 }
 
+function clear () {
+	operator = null
+	restart = false
+	atualNumber = '0'
+	firstNumber = null
+	display.textContent = atualNumber
+}
 
 container.addEventListener("click", (e) => {
 
@@ -123,6 +128,9 @@ container.addEventListener("click", (e) => {
 			break
 		case 'signal':
 			changeSignal()
+			break
+		case 'clear':
+			clear()
 			break
 		default:
 			break;

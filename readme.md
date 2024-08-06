@@ -13,7 +13,7 @@ Esse é o projeto final do curso de Fundações do [The Odin Project](https://ww
 
 - [x] Implementar operações básicas
 - [x] Adicionar funcionalidade ao botão "Igual"
-- [ ] Adicionar funcionalidade ao botão "Clear"
+- [x] Adicionar funcionalidade ao botão "Clear"
 - [x] Adicionar tratamento para divisão por zero
 - [x] Ajustar o display para números grandes
 - [ ] Adicionar funcionalidade ao botão de ponto decimal
